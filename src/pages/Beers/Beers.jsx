@@ -38,7 +38,7 @@ const Beers = () => {
     console.log(beers)
     return (
         <div className="bg-black">
-            <div className="grid grid-cols-3 gap-9 py-12 md:max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-9 py-12 md:max-w-6xl mx-auto">
                 {beers?.map(beer => <Card key={beer.id} beer={beer} />)}
             </div>
         </div>

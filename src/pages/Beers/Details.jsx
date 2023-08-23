@@ -8,9 +8,9 @@ const Details = () => {
     }
     const { image_url, name, description, abv, ibu, food_pairing } = data[0]
     return (
-        <div className="grid grid-cols-2 place-items-center h-screen bg-gradient-to-br from-blue-400 to-purple-600 text-white rounded-lg shadow-md p-4 w-full mx-auto px-5">
-            <div>
-                <img className="w-40 rounded-md hover:scale-125 duration-150" src={image_url} alt="Beer" />
+        <div className="grid grid-cols-1 md:grid-cols-2 place-items-center min-h-screen bg-gradient-to-br from-blue-400 to-purple-600 text-white rounded-lg shadow-md p-4 w-full mx-auto px-5">
+            <div className="">
+                <img className="w-32 md:w-40 rounded-md hover:scale-105 duration-150" src={image_url} alt="Beer" />
             </div>
             <div>
                 <h2 className="text-xl font-semibold mt-2">{name}</h2>
