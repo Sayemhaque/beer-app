@@ -13,7 +13,7 @@ const Form = () => {
         navigate("/beers")
     }
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <div className="flex justify-center items-center h-screen bg-gradient-to-br from-blue-800 to-purple-800">
         {/* message */}
       <div className="bg-white rounded shadow-md p-8 w-80 animate-slide-up">
         <h2 className="text-2xl font-bold mb-4">Login</h2>

@@ -4,9 +4,9 @@ function App() {
 
 
   return (
-    <>
+    <section className='bg-black'>
      <Form/>
-    </>
+    </section>
   )
 }
 
