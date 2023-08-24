@@ -12,7 +12,7 @@ const AuthProvider = ({ children }) => {
     const Login = (userData) => {
         const { email, password } = userData;
         // const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        
+
         if (email === "" && password === "") {
             setEmailFieldErr("Email is required")
             setPasswordFieldErr("password is required")
@@ -36,14 +36,12 @@ const AuthProvider = ({ children }) => {
             return;
         }
 
-        else{
+        else {
             setEmailFieldErr("")
             setPasswordFieldErr("")
             localStorage.setItem("userData", JSON.stringify(userData))
         }
     }
-      
-      
 
     const LogOut = () => {
         localStorage.removeItem("userData")

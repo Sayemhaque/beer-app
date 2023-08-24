@@ -45,7 +45,7 @@ const Form = () => {
            <Button
            type="submit"
            title="Login"
-           styles="px-3 py-2 mt-5"
+           styles="px-3 py-2 mt-5 bg-blue-500 hove:bg-blue-600 text-white"
            />
         </form>
       </div>

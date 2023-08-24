@@ -1,4 +1,5 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
+import Button from "../../components/Button";
 
 const Details = () => {
     const data = useLoaderData()
@@ -27,7 +28,11 @@ const Details = () => {
                         ))}
                     </ul>
                 </div>
-                <button onClick={handeleNavigate} className="bg-white px-7 mt-12 rounded-full font-bold py-2 text-black">Back</button>
+                <Button
+                title="Back"
+                styles="px-4 py-2 font-bold mt-12"
+                onClick={handeleNavigate}
+                />
             </div>
         </div>
     );
