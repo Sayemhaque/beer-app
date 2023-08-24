@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
 
     const Login = (userData) => {
         const { email, password } = userData;
-        // const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
         if (email === "" && password === "") {
             setEmailFieldErr("Email is required")
@@ -22,6 +22,12 @@ const AuthProvider = ({ children }) => {
         if (email === "") {
             setPasswordFieldErr("")
             setEmailFieldErr("Email is required")
+            return;
+        }
+        
+        if (!emailPattern.test(email)) {
+            setPasswordFieldErr("")
+            setEmailFieldErr("Email is not valid")
             return;
         }
 

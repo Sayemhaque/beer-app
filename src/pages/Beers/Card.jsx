@@ -13,7 +13,6 @@ const Card = ({ beer }) => {
             <p className="text-md text-gray-300 mt-3 font-sans font-bold">{beer.tagline}</p>
             <p className="text-gray-300 text-sm mt-3 font-semibold">{beer.description?.substring(0,100)}...</p>
         </div>
-
         </Link>
        </section>
     );
