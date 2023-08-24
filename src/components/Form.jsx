@@ -1,10 +1,11 @@
-import { useLocation, useNavigate, } from "react-router-dom";
+import { useLocation, useNavigate,} from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import InputField from "./InputField";
+import Button from "./Button";
 
 const Form = () => {
   const navigate = useNavigate()
-  const { Login } = useAuth()
+  const { Login,emailFieldErr,passwordFieldErr,} = useAuth()
   const location = useLocation()
   const msg = location.state?.msg;
   console.log(msg)
@@ -15,38 +16,37 @@ const Form = () => {
     const email = form.email.value;
     const password = form.password.value;
     const userData = {email, password}
-    console.log(userData)
     Login(userData)
-    navigate("/beers")
+    const user = localStorage.getItem("userData")
+    if(user){
+      navigate("/beers")
+    }  
   }
 
   return (
     <div className="flex justify-center items-center h-screen bg-gradient-to-br from-blue-800 to-purple-800">
-      <div className="bg-white rounded shadow-md p-8 w-80 animate-slide-up">
+      <div className="bg-white rounded shadow-md p-8 w-96 animate-slide-up">
         <h2 className="text-2xl font-bold mb-4">Login</h2>
         <form onSubmit={handleLogin}>
            <InputField
-            type="email"
+            type="text"
             label="Email"
             name="email"
             placeholder="Enter your Email"
+            error={emailFieldErr}
            />
            <InputField
             type="password"
             label="password"
             name="password"
             placeholder="password"
+            error={passwordFieldErr}
            />
-          <div className="mb-4">
-            <button
-              type="submit"
-              className="bg-blue-500 text-white rounded px-4 py-2 w-full hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
-            >
-              Login
-            </button>
-          </div>
-            {/* message */}
-          <p className="text-red-400">{msg}</p>
+           <Button
+           type="submit"
+           title="Login"
+           styles="px-3 py-2 mt-5"
+           />
         </form>
       </div>
     </div>
