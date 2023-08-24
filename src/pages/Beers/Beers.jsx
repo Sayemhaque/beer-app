@@ -1,9 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import Card from "./Card";
 import { useInfiniteQuery, } from "@tanstack/react-query";
-import { getBeers } from "../../utils";
+import Navbar from "../../components/Navbar";
 
 
+const getBeers = async (page = 1) => {
+    const res = await fetch(`https://api.punkapi.com/v2/beers?page=${page}&per_page=9`)
+    return res.json()
+}
 
 
 const Beers = () => {
@@ -18,32 +23,31 @@ const Beers = () => {
     })
 
     //observe the scroll & change the page
-    const handleInfiniteScroll = async () => {
-        let fetching = false;
-        const scrollHeight = document.documentElement.scrollHeight;
-        const innerHeight = window.innerHeight;
-        const scrollTop = document.documentElement.scrollTop;
-
-        if (!fetching && innerHeight + scrollTop + 1 >= scrollHeight) {
-            fetching = true;
-            if (hasNextPage) {
-                await fetchNextPage()
-            }
-            fetching = false;
-
-        }
-    }
-
-    // console.log(data.pages[0].map(page => console.log(page)))
     useEffect(() => {
-        window.addEventListener("scroll", handleInfiniteScroll)
-        return () => window.removeEventListener("scroll", handleInfiniteScroll)
-    }, [])
+        let fetching = false;
+        const onScroll = async (event) => {
+            const { scrollHeight, scrollTop, clientHeight } =
+                event.target.scrollingElement;
+
+            if (!fetching && scrollHeight - scrollTop <= clientHeight * 1) {
+                fetching = true;
+                if (hasNextPage) await fetchNextPage();
+                fetching = false;
+            }
+        };
+
+        document.addEventListener("scroll", onScroll);
+        return () => {
+            document.removeEventListener("scroll", onScroll);
+        };
+    }, [data]);
+
 
     console.log(data)
     return (
-        <div className="bg-black">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-9 py-12 md:max-w-6xl mx-auto">
+        <div className="bg-gray-300">
+            <Navbar />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-7 py-8 md:max-w-6xl mx-auto">
                 {data?.pages.map(page =>
                     page.map(beer => <Card key={beer.id} beer={beer} />)
                 )}

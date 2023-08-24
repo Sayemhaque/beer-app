@@ -13,9 +13,8 @@ const Details = () => {
                 <img className="w-32 md:w-40 rounded-md hover:scale-105 duration-150" src={image_url} alt="Beer" />
             </div>
             <div>
-                <h2 className="text-xl font-semibold mt-2">{name}</h2>
-                <p className="text-gray-300 mb-2">{name}</p>
-                <p className="text-gray-300">{description}...</p>
+                <h2 className="text-xl md:text-5xl font-bold mt-2">{name}</h2>
+                <p className="text-gray-300 py-4">{description}...</p>
                 <div className="mt-4">
                     <span className="bg-gray-200 py-1 px-2 rounded-full text-sm text-gray-700">{abv}% ABV</span>
                     <span className="bg-gray-200 py-1 px-2 rounded-full text-sm text-gray-700 ml-2">{ibu} IBU</span>
