@@ -1,20 +1,27 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
 const Form = () => {
-    const navigate = useNavigate()
-    const {Login} = useAuth()
-    const location = useLocation()
-    const msg = location.state?.msg;
-    console.log(msg)
-    const handleLogin = (e) => {
-        e.preventDefault()
-        Login()
-        navigate("/beers")
-    }
+  const navigate = useNavigate()
+  const { Login } = useAuth()
+  const location = useLocation()
+  const msg = location.state?.msg;
+  console.log(msg)
+
+  const handleLogin = (e) => {
+    e.preventDefault()
+    const form = e.target;
+    const userName = form.username.value;
+    const password = form.password.value;
+    const userData = {userName, password}
+    console.log(userData)
+    Login(userData)
+    navigate("/beers")
+  }
+
   return (
     <div className="flex justify-center items-center h-screen bg-gradient-to-br from-blue-800 to-purple-800">
-        {/* message */}
+      {/* message */}
       <div className="bg-white rounded shadow-md p-8 w-80 animate-slide-up">
         <h2 className="text-2xl font-bold mb-4">Login</h2>
         <form onSubmit={handleLogin}>

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { createContext } from "react";
 
 
@@ -6,18 +5,16 @@ import { createContext } from "react";
 export const AuthContext = createContext()
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({children}) => {
-    const [user,setUser] = useState(false)
 
-    const Login = () => {
-        setUser(true)
+    const Login = (userData) => {
+       localStorage.setItem("userData",JSON.stringify(userData))
     }
 
     const LogOut = () => {
-        setUser(false)
+        localStorage.removeItem("userData")
     }
 
     const auth = {
-        user,
         Login,
         LogOut
     }
