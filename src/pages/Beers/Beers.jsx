@@ -22,7 +22,7 @@ const Beers = () => {
         }
     })
 
-    //observe the scroll & change the page
+    //observe the scroll 
     useEffect(() => {
         let fetching = false;
         const onScroll = async (event) => {
@@ -35,7 +35,6 @@ const Beers = () => {
                 fetching = false;
             }
         };
-
         document.addEventListener("scroll", onScroll);
         return () => {
             document.removeEventListener("scroll", onScroll);
@@ -45,7 +44,7 @@ const Beers = () => {
 
     console.log(data)
     return (
-        <div className="bg-gray-300">
+        <div className="bg-gray-100">
             <Navbar />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-7 py-8 md:max-w-6xl mx-auto">
                 {data?.pages.map(page =>

@@ -30,7 +30,7 @@ const Details = () => {
                 </div>
                 <Button
                 title="Back"
-                styles="px-4 py-2 font-bold mt-12"
+                styles="px-4 py-2 bg-white hover:bg-gray-200 text-black mt-12"
                 onClick={handeleNavigate}
                 />
             </div>
